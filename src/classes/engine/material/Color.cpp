@@ -17,7 +17,7 @@ const Color Color::BLUE(0.0, 0.0, 1.0);
 
 Color::Color() {
 
-    set(0.0, 0.0, 0.0, 1.0);
+    set(0.0, 0.0, 0.0, 0.0);
 }
 
 Color::Color(double r, double g, double b, double alpha) {
@@ -25,41 +25,39 @@ Color::Color(double r, double g, double b, double alpha) {
     set(r, g, b, alpha);
 }
 
-Color::Color(Color& color) {
+Color::Color(const Color& color) {
 
-    set(r, g, b, alpha);
+    set(color.r, color.g, color.b, color.alpha);
 }
 
 Color::~Color() {
 }
 
-void Color::operator =(Color& color) {
+void Color::operator =(const Color& color) {
 
     set(color.r, color.g, color.b, color.alpha);
 }
 
-Color Color::operator +(Color& color) {
+Color Color::operator +(const Color& color) {
     Color temp;
 
-    temp.set(color.r + this->r, color.g + this->g, color.b + this->b,
-            color.alpha + this->alpha);
+    temp.set(color.r + this->r, color.g + this->g, color.b + this->b, 1.0);
 
     return temp;
 }
 
-Color Color::operator -(Color& color) {
+Color Color::operator -(const Color& color) {
     Color temp;
 
-    temp.set(color.r - this->r, color.g - this->g, color.b - this->b,
-            color.alpha - this->alpha);
+    temp.set(this->r - color.r, this->g - color.g, this->b - color.b, 1.0);
 
     return temp;
 }
 
-Color Color::operator *(double scale) {
+Color Color::operator *(const double& scale) {
     Color temp;
 
-    temp.set(scale * this->r, scale * this->g, scale * this->b);
+    temp.set(scale * this->r, scale * this->g, scale * this->b, 1.0);
 
     return temp;
 }

@@ -17,14 +17,16 @@ class Color {
     public:
         /// @name Base colors
         //@{
-        static const Color BLACK;   /**< Black base color (0.0, 0.0, 0,0) */
-        static const Color WHITE;   /**< White base color (1.0, 1.0, 1,0)*/
-        static const Color RED;     /**< Red base color (1.0, 0.0, 0,0) */
-        static const Color GREEN;   /**< Green base color (0.0, 1.0, 0,0) */
-        static const Color BLUE;    /**< Blue base color (0.0, 0.0, 1,0) */
+        static const Color BLACK; /**< Black base color (0.0, 0.0, 0,0) */
+        static const Color WHITE; /**< White base color (1.0, 1.0, 1,0) */
+        static const Color RED; /**< Red base color (1.0, 0.0, 0,0) */
+        static const Color GREEN; /**< Green base color (0.0, 1.0, 0,0) */
+        static const Color BLUE; /**< Blue base color (0.0, 0.0, 1,0) */
         //@}
 
-        /// Enumeration for different standards
+        /**
+         * Enumerator for different standards
+         */
         typedef enum Gamut_e {
             BT601 = 0, /**< Standard Definition */
             BT709, /**< High Definition */
@@ -53,7 +55,7 @@ class Color {
          * Copy constructor
          * @param color Reference used for initialization
          */
-        Color(Color& color);
+        Color(const Color& color);
 
         /**
          * Virtual destructor
@@ -63,16 +65,16 @@ class Color {
         /// @name Operators
         //@{
         /** Color assignment operator */
-        void operator=(Color& color);
+        void operator=(const Color& color);
 
         /** Color addition operator */
-        Color operator+(Color& color);
+        Color operator+(const Color& color);
 
         /** Color subtraction operator */
-        Color operator-(Color& color);
+        Color operator-(const Color& color);
 
         /** Scaler operator */
-        Color operator*(double scale);
+        Color operator*(const double& scale);
         //@}
 
         /// @name Getters and setters
@@ -129,7 +131,7 @@ class Color {
         //@{
         /**
          * Calculates the luminance of the color
-         * @return
+         * @return luminance
          */
         double getLuminance();
         //@}
