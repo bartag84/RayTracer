@@ -11,6 +11,12 @@
 
 namespace engine {
 
+const Vector Vector::NULLVECTOR = Vector();
+const Vector Vector::UNITYVECTOR = Vector(1.0, 1.0, 1.0);
+const Vector Vector::XBASEVECTOR = Vector(1.0, 0.0, 0.0);
+const Vector Vector::YBASEVECTOR = Vector(0.0, 1.0, 0.0);
+const Vector Vector::ZBASEVECTOR = Vector(0.0, 0.0, 1.0);
+
 Vector::Vector() {
 
     this->x = 0.0;
@@ -69,7 +75,7 @@ double Vector::operator *(const Vector& vector) {
 }
 
 void Vector::normalize() {
-    double r = getRadialDistance();
+    double r = getMagnitude();
 
     if (r != 0.0) {
         this->x /= r;
@@ -105,13 +111,13 @@ void Vector::set(double x, double y, double z) {
     this->z = z;
 }
 
-double Vector::getRadialDistance() {
+double Vector::getMagnitude() {
 
     return sqrt((this->x * this->x) + (this->y * this->y) + (this->z * this->z));
 }
 
 double Vector::getTheta() {
-    double r = getRadialDistance();
+    double r = getMagnitude();
 
     if (r == 0.0)
         return 0.0;
@@ -134,9 +140,14 @@ void Vector::setSphericalCoordinates(double r, double theta, double phi) {
     this->x = r * cos(theta);
 }
 
-double Vector::scalerProduct(Vector a, Vector b) {
+double Vector::getAngle(Vector a, Vector b) {
+    double ma = a.getMagnitude();
+    double mb = b.getMagnitude();
 
-    return (a.x * b.x) + (a.y * b.y) + (a.z * b.z);
+    if (ma * mb == 0.0)
+        return 0.0;
+    else
+        return acos(((a.x * b.x) + (a.y * b.y) + (a.z * b.z)) / ma / mb);
 }
 
 Vector Vector::crossProduct(Vector a, Vector b) {

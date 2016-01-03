@@ -14,6 +14,13 @@ namespace engine {
  * 3D Vector handling class
  */
 class Vector {
+    public:
+        static const Vector NULLVECTOR;     //< Null vector
+        static const Vector UNITYVECTOR;    //< Unity vector
+        static const Vector XBASEVECTOR;    //< X base vector
+        static const Vector YBASEVECTOR;    //< Y base vector
+        static const Vector ZBASEVECTOR;    //< Z base vector
+
     private:
         double x, y, z;     //< Cartesian coordinates
 
@@ -65,7 +72,7 @@ class Vector {
         Vector operator*(const double scale);
 
         /**
-         * Scaler product
+         * Dot product
          */
         double operator*(const Vector& vector);
 
@@ -107,10 +114,10 @@ class Vector {
         /// @name Spherical coordinate system getters and setters
         //@{
         /**
-         * Gets the Radial distance in spherical coordinate system
-         * @return Radial distance
+         * Gets the magnitude of the vector
+         * @return Magnitude
          */
-        double getRadialDistance();
+        double getMagnitude();
 
         /**
          * Gets the Polar angle (Theta) in spherical coordinate system
@@ -126,7 +133,7 @@ class Vector {
 
         /**
          * Sets the coordiantes in spherical coordinate system
-         * @param r Radial distance
+         * @param r Radial distance (Magnitude)
          * @param theta Polar angle (Theta)
          * @param phi Azimuth angle (Phi)
          */
@@ -136,12 +143,12 @@ class Vector {
         /// @name Utilities
         //@{
         /**
-         * Creates the scaler product of two vectors
+         * Gets the angle between the two vectors
          * @param a Vector
          * @param b Vector
-         * @return Scaler product of a and b (a.b)
+         * @return Angle between a and b
          */
-        static double scalerProduct(Vector a, Vector b);
+        static double getAngle(Vector a, Vector b);
 
         /**
          * Creates the cross product of two vectors
