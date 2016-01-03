@@ -17,24 +17,24 @@ class Color {
     public:
         /// @name Base colors
         //@{
-        static const Color BLACK; /**< Black base color (0.0, 0.0, 0,0) */
-        static const Color WHITE; /**< White base color (1.0, 1.0, 1,0) */
-        static const Color RED; /**< Red base color (1.0, 0.0, 0,0) */
-        static const Color GREEN; /**< Green base color (0.0, 1.0, 0,0) */
-        static const Color BLUE; /**< Blue base color (0.0, 0.0, 1,0) */
+        static const Color BLACK;   //< Black base color (0.0, 0.0, 0,0)
+        static const Color WHITE;   //< White base color (1.0, 1.0, 1,0)
+        static const Color RED;     //< Red base color (1.0, 0.0, 0,0)
+        static const Color GREEN;   //< Green base color (0.0, 1.0, 0,0)
+        static const Color BLUE;    //< Blue base color (0.0, 0.0, 1,0)
         //@}
 
         /**
          * Enumerator for different standards
          */
         typedef enum Gamut_e {
-            BT601 = 0, /**< Standard Definition */
-            BT709, /**< High Definition */
-            BT2020 /**< Ultra High Definition */
+            BT601 = 0,  //< Standard Definition
+            BT709,      //< High Definition
+            BT2020      //< Ultra High Definition
         } Gamut;
 
     private:
-        double r, g, b, alpha;
+        double r, g, b, alpha;  //< Components
 
     public:
         /**
